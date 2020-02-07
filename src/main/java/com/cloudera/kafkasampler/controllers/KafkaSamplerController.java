@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RestController
 public class KafkaSamplerController {
 
-    @RequestMapping("/api/v1/samples/kafka")
+    @RequestMapping("/api/v1/kafka-sampler")
     public String getKafkaSample() {
         return "Greetings from Spring Boot!";
     }
