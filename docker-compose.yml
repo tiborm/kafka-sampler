@@ -20,7 +20,7 @@ services:
       ## https://yaml.org/spec/1.2/spec.html
       KAFKA_ADVERTISED_LISTENERS: >- 
         LISTENER_DOCKER_INTERNAL://kafka:19092, 
-        LISTENER_DOCKER_EXTERNAL://${DOCKER_HOST_IP:-kafka}:9092
+        LISTENER_DOCKER_EXTERNAL://${DOCKER_HOST_IP:-localhost}:9092
 
       KAFKA_LISTENERS: >-
         LISTENER_DOCKER_INTERNAL://:19092,
