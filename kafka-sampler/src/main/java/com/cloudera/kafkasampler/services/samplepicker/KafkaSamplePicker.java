@@ -37,6 +37,7 @@ public class KafkaSamplePicker {
         Map<String, Object> consumerConfig = new HashMap<String, Object>();
         consumerConfig.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapServers);
         consumerConfig.put(ConsumerConfig.GROUP_ID_CONFIG, groupId);
+        // consumerConfig.put("auto.offset.reset", "latest");
 
         DefaultKafkaConsumerFactory<String, String> kafkaConsumerFactory =
             new DefaultKafkaConsumerFactory<>(
@@ -47,7 +48,7 @@ public class KafkaSamplePicker {
         ContainerProperties containerProperties = new ContainerProperties(topic);
         containerProperties.setMessageListener(
                 (MessageListener<String, String>) message -> {
-                    logger.info(String.format("#### -> Consumed message -> %s", message));
+                    logger.info(String.format("#### -> Consumed message -> %s, countDownÉ %s", message, latch.getCount()));
                     consumedMessages.add(message.value());
                     latch.countDown();
                 });
